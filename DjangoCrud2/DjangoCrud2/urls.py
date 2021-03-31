@@ -16,6 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from enroll import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # path('enroll/', include('enroll.urls')),
+    path('',views.AddDisplay.as_view(),name='addanddisplay'),
+    path('delete/<int:id>/', views.DeleteView.as_view(), name="delete"),
+    path('<int:id>/', views.UpdateView.as_view(), name="update"),
+
 ]
